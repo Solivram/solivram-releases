@@ -66,6 +66,10 @@
 ### Debian / Ubuntu
 
 ```bash
+# Via curl (recommandé)
+curl -LO https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/solivram_0.1.0_amd64.deb && sudo dpkg -i solivram_0.1.0_amd64.deb
+
+# Ou télécharger manuellement
 sudo dpkg -i solivram_0.1.0_amd64.deb
 solivram --help
 ```
