@@ -8,7 +8,7 @@
   <a href="https://github.com/Solivram/solivram-releases/blob/main/README.md">
     <img src="https://img.shields.io/badge/🇫🇷%20Français-0055A4?style=for-the-badge" alt="Français"/>
   </a>
-  &nbsp;
+
   <a href="https://github.com/Solivram/solivram-releases/blob/main/README_EN.md">
     <img src="https://img.shields.io/badge/🇬🇧%20English-012169?style=for-the-badge" alt="English"/>
   </a>
