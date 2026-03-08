@@ -61,6 +61,16 @@
 
 ---
 
+## System requirements
+
+- **OS** : Debian 11+ / Ubuntu 20.04+ (amd64 x86-64)
+- **Architecture** : x86-64 only
+
+```bash
+# Check architecture
+uname -m  # should display x86_64
+```
+
 ## Installation
 
 ### Debian / Ubuntu
@@ -123,6 +133,32 @@ solivram identity:verify
 
 ---
 
+
+## Post-installation check
+
+```bash
+solivram --version
+solivram --help
+solivram identity:verify
+# ✅ P-256 valid | ✅ ML-DSA valid
+```
+
+## First start
+
+```bash
+# Launch solivram in terminal mode
+solivram
+
+# Launch solivram in GUI mode
+solivram --gui
+```
+
+## Uninstall
+
+```bash
+sudo dpkg -r solivram
+```
+
 ## Documentation
 
 | Document | Français | English |
@@ -130,6 +166,22 @@ solivram identity:verify
 | **Quickstart** | [Solivram_Quickstart.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Quickstart.pdf) | [Solivram_Quickstart_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Quickstart_EN.pdf) |
 
 ---
+
+## FAQ
+
+**Q: Does Rust need to be installed to use solivram?**
+No. The `.deb` package contains a pre-compiled binary. Rust is only required to build from source.
+
+**Q: Does solivram work on ARM / Raspberry Pi?**
+Not yet. Only amd64 (x86-64) architecture is supported in v0.1.0.
+
+**Q: Is the binary signed?**
+Yes. Solivram embeds a P-256 + ML-DSA-65 identity verifiable via `solivram identity:verify`.
+
+**Q: How to update solivram?**
+```bash
+curl -LO https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/solivram_0.1.0_amd64.deb && sudo dpkg -i solivram_0.1.0_amd64.deb
+```
 
 ## Sector pitches
 
