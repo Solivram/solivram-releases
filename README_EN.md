@@ -30,7 +30,7 @@
 |------------|-------------------------------------|
 | Author     | Jenka Nauta                         |
 | Version    | 0.1.0                               |
-| Date       | 2026-03-08                          |
+| Date       | 2026-03-09                          |
 | Licence    | MIT                                 |
 | Type       | Server / Daemon                     |
 | Origin     | France                              |
