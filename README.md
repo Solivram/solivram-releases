@@ -30,12 +30,12 @@
 |------------|-------------------------------------|
 | Auteur     | Jenka Nauta                         |
 | Version    | 0.1.0                               |
-| Date       | 2026-03-09                          |
+| Date       | 2026-03-10                          |
 | Licence    | MIT                                 |
 | Type       | Serveur / Daemon                    |
 | Origine    | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 150 — 1106 tests validés            |
+| Phase      | 153 — 1118 tests validés            |
 
 ---
 
@@ -165,6 +165,7 @@ sudo dpkg -r solivram
 
 | Document | Français | English |
 |----------|----------|---------|
+| **Mise en garde** | [Solivram_Mise_En_Garde_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Mise_En_Garde_FR.pdf) | [Solivram_Warning_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Warning_EN.pdf) |
 | **Quickstart** | [Solivram_Quickstart.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Quickstart.pdf) | [Solivram_Quickstart_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Quickstart_EN.pdf) |
 
 ---
