@@ -124,6 +124,7 @@ sudo dpkg -r solivram
 | **Configuration production** | [Solivram_Config_Prod_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Config_Prod_FR.pdf) | [Solivram_Config_Prod_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Config_Prod_EN.pdf) |
 | **Configuration complète** | [Solivram_Config_Prod_full_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Config_Prod_full_FR.pdf) | [Solivram_Config_Prod_full_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Config_Prod_full_EN.pdf) |
 | **Exception hot-reload security_level** | [FR](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Exception_Hot_Reload_Security_Level_FR.pdf) | [EN](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Exception_Hot_Reload_Security_Level_EN.pdf) |
+| **Roadmap v0.2.0** | [Solivram_Roadmap_v0.2.0_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Roadmap_v0.2.0_FR.pdf) | [Solivram_Roadmap_v0.2.0_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Roadmap_v0.2.0_EN.pdf) |
 
 ---
 
@@ -160,6 +161,8 @@ sudo dpkg -r solivram
 | [Solivram_Pitch_Energy_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Pitch_Energy_EN.pdf) | Energy / Industry pitch (EN) |
 | [Solivram_Pitch_Admin_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Pitch_Admin_FR.pdf) | Pitch Administrations (FR) |
 | [Solivram_Pitch_Admin_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Pitch_Admin_EN.pdf) | Government pitch (EN) |
+| [Solivram_Roadmap_v0.2.0_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Roadmap_v0.2.0_FR.pdf) | Roadmap v0.2.0 (FR) |
+| [Solivram_Roadmap_v0.2.0_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Roadmap_v0.2.0_EN.pdf) | Roadmap v0.2.0 (EN) |
 
 ---
 
