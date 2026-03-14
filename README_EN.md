@@ -118,7 +118,7 @@ sudo dpkg -r solivram
 | Document | Français | English |
 |----------|----------|---------|
 | **Warning & map** | [Solivram_Mise_En_Garde_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Mise_En_Garde_FR.pdf) | [Solivram_Warning_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Warning_EN.pdf) |
-| **Quickstart** | [Solivram_Quickstart.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Quickstart.pdf) | [Solivram_Quickstart_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Quickstart_EN.pdf) |
+| **Quickstart** | [Solivram_Quickstart_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Quickstart_FR.pdf) | [Solivram_Quickstart_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Quickstart_EN.pdf) |
 | **Overview** | [Solivram_Overview_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Overview_FR.pdf) | [Solivram_Overview_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Overview_EN.pdf) |
 | **Admin guide** | [Solivram_Guide_Admin_fr.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Guide_Admin_fr.pdf) | [Solivram_Admin_Guide_en.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Admin_Guide_en.pdf) |
 | **Production config** | [Solivram_Config_Prod_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Config_Prod_FR.pdf) | [Solivram_Config_Prod_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Config_Prod_EN.pdf) |
@@ -136,7 +136,7 @@ sudo dpkg -r solivram
 | [solivram_0.1.0_amd64.deb](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/solivram_0.1.0_amd64.deb) | Debian package — main installation |
 | [Solivram_Mise_En_Garde_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Mise_En_Garde_FR.pdf) | Warning, map, prerequisites (FR) |
 | [Solivram_Warning_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Warning_EN.pdf) | Installation warning & map (EN) |
-| [Solivram_Quickstart.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Quickstart.pdf) | Quick start guide (FR) |
+| [Solivram_Quickstart_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Quickstart_FR.pdf) | Quick start guide (FR) |
 | [Solivram_Quickstart_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Quickstart_EN.pdf) | Quick start guide (EN) |
 | [Solivram_Overview_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Overview_FR.pdf) | Project overview (FR) |
 | [Solivram_Overview_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Overview_EN.pdf) | Project overview (EN) |
