@@ -5,13 +5,9 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Solivram/solivram-releases/blob/main/README.md">
-    <img src="https://img.shields.io/badge/🇫🇷%20Français-0055A4?style=for-the-badge" alt="Français"/>
-  </a>
-
-  <a href="https://github.com/Solivram/solivram-releases/blob/main/README_EN.md">
-    <img src="https://img.shields.io/badge/🇬🇧%20English-012169?style=for-the-badge" alt="English"/>
-  </a>
+  <a href="https://github.com/Solivram/solivram-releases/blob/main/README.md"><strong>🇫🇷 Français</strong></a>
+  &nbsp;·&nbsp;
+  <a href="https://github.com/Solivram/solivram-releases/blob/main/README_EN.md"><strong>🇬🇧 English</strong></a>
 </p>
 
 > High-availability distributed infrastructure, post-quantum secured, observable and extensible, built in pure Rust for critical environments.
@@ -30,7 +26,7 @@
 |------------|-------------------------------------|
 | Author     | Jenka Nauta                         |
 | Version    | 0.1.0                               |
-| Date       | 2026-03-11                          |
+| Date       | 2026-03-14                          |
 | Licence    | MIT                                 |
 | Type       | Server / Daemon                     |
 | Origin     | France                              |
@@ -69,55 +65,22 @@
 - **Architecture** : x86-64 only
 
 ```bash
-# Check architecture
 uname -m  # should display x86_64
 ```
 
 ## Installation
 
-### Debian / Ubuntu
-
 ```bash
-# Via curl (recommended)
 curl -LO https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/solivram_0.1.0_amd64.deb && sudo dpkg -i solivram_0.1.0_amd64.deb
-
-# Or download manually
-sudo dpkg -i solivram_0.1.0_amd64.deb
 solivram --help
 ```
 
-**Dependencies** :
-
-### PATH configuration
+**Dependencies** : `libwayland-client0` · `libudev1` · `libasound2` · `libgcc-s1` · `libc6` · `libffi8` · `libcap2`
 
 ```bash
-# Add solivram to PATH (permanent)
-echo 'export PATH=$PATH:/usr/bin' >> ~/.bashrc && source ~/.bashrc
-```
-
-### Execution permissions
-
-```bash
-# If the binary is blocked at execution
-chmod +x /usr/bin/solivram
-
-# Allow ports < 1024 without sudo
+# Allow ports < 1024 without root
 sudo setcap cap_net_bind_service=+ep /usr/bin/solivram
 ```
-
-### If blocked by the OS (AppArmor / SELinux)
-
-```bash
-# Check if AppArmor is blocking solivram
-sudo aa-status | grep solivram
-
-# Temporarily disable AppArmor for solivram
-sudo aa-complain /usr/bin/solivram
-
-# Or add a SELinux exception
-sudo semanage fcontext -a -t bin_t '/usr/bin/solivram'
-sudo restorecon -v /usr/bin/solivram
-``` `libwayland-client0` · `libudev1` · `libasound2` · `libgcc-s1` · `libc6` · `libffi8` · `libcap2`
 
 ---
 
@@ -135,24 +98,11 @@ solivram identity:verify
 
 ---
 
-
-## Post-installation check
-
-```bash
-solivram --version
-solivram --help
-solivram identity:verify
-# ✅ P-256 valid | ✅ ML-DSA valid
-```
-
 ## First start
 
 ```bash
-# Launch solivram in terminal mode
-solivram
-
-# Launch solivram in GUI mode
-solivram --gui
+solivram --config /etc/solivram/default.toml headless
+solivram --config /etc/solivram/default.toml api
 ```
 
 ## Uninstall
@@ -161,12 +111,54 @@ solivram --gui
 sudo dpkg -r solivram
 ```
 
+---
+
 ## Documentation
 
 | Document | Français | English |
 |----------|----------|---------|
-| **Warning & Map** | [Solivram_Mise_En_Garde_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Mise_En_Garde_FR.pdf) | [Solivram_Warning_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Warning_EN.pdf) |
+| **Warning & map** | [Solivram_Mise_En_Garde_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Mise_En_Garde_FR.pdf) | [Solivram_Warning_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Warning_EN.pdf) |
 | **Quickstart** | [Solivram_Quickstart.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Quickstart.pdf) | [Solivram_Quickstart_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Quickstart_EN.pdf) |
+| **Overview** | [Solivram_Overview.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Overview.pdf) | — |
+| **Admin guide** | [Solivram_Guide_Admin_fr.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Guide_Admin_fr.pdf) | [Solivram_Admin_Guide_en.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Admin_Guide_en.pdf) |
+| **Production config** | [Solivram_Config_Prod_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Config_Prod_FR.pdf) | [Solivram_Config_Prod_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Config_Prod_EN.pdf) |
+| **Full configuration** | [Solivram_Config_Prod_full_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Config_Prod_full_FR.pdf) | [Solivram_Config_Prod_full_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Config_Prod_full_EN.pdf) |
+| **Exception hot-reload security_level** | [FR](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Exception_Hot_Reload_Security_Level_FR.pdf) | [EN](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Exception_Hot_Reload_Security_Level_EN.pdf) |
+
+---
+
+## Release files
+
+> GitHub truncates the asset list — complete list below.
+
+| File | Description |
+|------|-------------|
+| [solivram_0.1.0_amd64.deb](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/solivram_0.1.0_amd64.deb) | Debian package — main installation |
+| [Solivram_Mise_En_Garde_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Mise_En_Garde_FR.pdf) | Warning, map, prerequisites (FR) |
+| [Solivram_Warning_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Warning_EN.pdf) | Installation warning & map (EN) |
+| [Solivram_Quickstart.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Quickstart.pdf) | Quick start guide (FR) |
+| [Solivram_Quickstart_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Quickstart_EN.pdf) | Quick start guide (EN) |
+| [Solivram_Overview.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Overview.pdf) | Project overview (FR) |
+| [Solivram_Guide_Admin_fr.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Guide_Admin_fr.pdf) | Complete admin guide (FR) |
+| [Solivram_Admin_Guide_en.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Admin_Guide_en.pdf) | Complete admin guide (EN) |
+| [Solivram_Config_Prod_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Config_Prod_FR.pdf) | Production configuration — example (FR) |
+| [Solivram_Config_Prod_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Config_Prod_EN.pdf) | Production configuration — example (EN) |
+| [Solivram_Config_Prod_full_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Config_Prod_full_FR.pdf) | Full configuration — TOML reference (FR) |
+| [Solivram_Config_Prod_full_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Config_Prod_full_EN.pdf) | Full configuration — TOML reference (EN) |
+| [Solivram_Exception_Hot_Reload_Security_Level_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Exception_Hot_Reload_Security_Level_FR.pdf) | Exception hot-reload security_level (FR) |
+| [Solivram_Exception_Hot_Reload_Security_Level_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Exception_Hot_Reload_Security_Level_EN.pdf) | Exception hot-reload security_level (EN) |
+| [Solivram_Pitch_Defense_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Pitch_Defense_FR.pdf) | Defense pitch (FR) |
+| [Solivram_Pitch_Defense_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Pitch_Defense_EN.pdf) | Defense pitch (EN) |
+| [Solivram_Pitch_Sante_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Pitch_Sante_FR.pdf) | Healthcare pitch (FR) |
+| [Solivram_Pitch_Healthcare_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Pitch_Healthcare_EN.pdf) | Healthcare pitch (EN) |
+| [Solivram_Pitch_Finance_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Pitch_Finance_FR.pdf) | Finance pitch (FR) |
+| [Solivram_Pitch_Finance_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Pitch_Finance_EN.pdf) | Finance pitch (EN) |
+| [Solivram_Pitch_Agents_IA_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Pitch_Agents_IA_FR.pdf) | AI Agents pitch (FR) |
+| [Solivram_Pitch_Agents_IA_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Pitch_Agents_IA_EN.pdf) | AI Agents pitch (EN) |
+| [Solivram_Pitch_Energie_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Pitch_Energie_FR.pdf) | Energy / Industry pitch (FR) |
+| [Solivram_Pitch_Energy_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Pitch_Energy_EN.pdf) | Energy / Industry pitch (EN) |
+| [Solivram_Pitch_Admin_FR.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Pitch_Admin_FR.pdf) | Government pitch (FR) |
+| [Solivram_Pitch_Admin_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.1.0/Solivram_Pitch_Admin_EN.pdf) | Government pitch (EN) |
 
 ---
 
