@@ -22,12 +22,12 @@
 |------------|-------------------------------------|
 | Auteur     | Jenka Nauta                         |
 | Version    | 0.2.0                               |
-| Date       | 2026-03-15                          |
+| Date       | 2026-03-20                          |
 | Licence    | MIT                                 |
 | Type       | Serveur / Daemon                    |
 | Origine    | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 174 — 1227 tests validés            |
+| Phase      | 191 — 1259 tests validés            |
 
 ---
 
@@ -165,6 +165,15 @@ sudo dpkg -r solivram
 | [Solivram_Manuel_Dev.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.2.0/Solivram_Manuel_Dev.pdf) | Manuel développeur (FR) |
 | [Solivram_Manuel_Dev_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.2.0/Solivram_Manuel_Dev_EN.pdf) | Developer guide (EN) |
 | [Solivram_Roadmap_v0.2.0_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.2.0/Solivram_Roadmap_v0.2.0_EN.pdf) | Roadmap v0.2.0 (EN) |
+
+---
+
+## Changelog
+
+### v0.2.0 — Phase 191 (2026-03-20)
+- **PKI Key Usage corrigé** (Phase 190) : certificats X.509 avec `digitalSignature` correct — résout curl SSL erreur 60 "unsuitable certificate purpose"
+- **Gossip TLS retry backoff** (Phase 191) : reconnexion automatique après échec hot-swap (backoff 10 s → 30 s → 60 s), alerte admin après 3 échecs consécutifs
+- 1259 tests · build propre · clippy 0 warning
 
 ---
 
