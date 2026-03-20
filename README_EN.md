@@ -26,12 +26,12 @@
 |------------|-------------------------------------|
 | Author     | Jenka Nauta                         |
 | Version    | 0.2.0                               |
-| Date       | 2026-03-15                          |
+| Date       | 2026-03-20                          |
 | Licence    | MIT                                 |
 | Type       | Server / Daemon                     |
 | Origin     | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 174 — 1227 tests passed             |
+| Phase      | 191 — 1259 tests passed             |
 
 ---
 
@@ -169,6 +169,15 @@ sudo dpkg -r solivram
 | [Solivram_Architecture_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.2.0/Solivram_Architecture_EN.pdf) | Project architecture (EN) |
 | [Solivram_Manuel_Dev.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.2.0/Solivram_Manuel_Dev.pdf) | Developer guide (FR) |
 | [Solivram_Manuel_Dev_EN.pdf](https://github.com/Solivram/solivram-releases/releases/download/v0.2.0/Solivram_Manuel_Dev_EN.pdf) | Developer guide (EN) |
+
+---
+
+## Changelog
+
+### v0.2.0 — Phase 191 (2026-03-20)
+- **PKI Key Usage fixed** (Phase 190): X.509 certificates now carry correct `digitalSignature` KeyUsage — resolves curl SSL error 60 "unsuitable certificate purpose"
+- **Gossip TLS retry backoff** (Phase 191): automatic reconnection after hot-swap failure (backoff 10 s → 30 s → 60 s), admin alert after 3 consecutive failures
+- 1259 tests · clean build · clippy 0 warnings
 
 ---
 
