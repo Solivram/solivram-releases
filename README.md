@@ -22,12 +22,12 @@
 |------------|-------------------------------------|
 | Auteur     | Jenka Nauta                         |
 | Version    | 0.2.0                               |
-| Date       | 2026-03-20                          |
+| Date       | 2026-03-21                          |
 | Licence    | MIT                                 |
 | Type       | Serveur / Daemon                    |
 | Origine    | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 191 — 1259 tests validés            |
+| Phase      | 205 — 1325 tests validés            |
 
 ---
 
@@ -170,6 +170,18 @@ sudo dpkg -r solivram
 
 ## Changelog
 
+### v0.2.0 — Phase 205 (2026-03-21)
+- **Correction adresses Raft** (Phase 192) : port pairs dérivé correctement (port local → port Raft)
+- **StorageManager + EncryptedBackend** (Phase 193) : cache KV HA chiffré AES-256-GCM devant JenkaKv
+- **TopologyMode** (Phase 194) : configuration réseau Local/WAN/Cloud, timeouts Raft adaptatifs
+- **GET /api/cluster/nodes** (Phase 195) : découverte nœuds multi-cloud
+- **TlsEnforcer** (Phase 196) : enforcement TLS/PQC selon topologie (wan/cloud obligatoire)
+- **Correctifs sécurité** (Phase 197) + **performance** (Phase 198) + **pipelines** (Phases 199-200)
+- **Machine Binding v2 + K_user v2** (Phases 201-202) : dérivation clé utilisateur liée à l'ancre machine, endpoint `/api/admin/users/rekey`
+- **Warn ApiMode tls_mode="required"** (Phase 204) : warn émis si PKI absente en mode api standalone
+- **Corrections Clippy** (Phase 205) : W1-W5 let chains + cast u64, B6-5 warn mdns+topology wan/cloud
+- 1325 tests · build propre · clippy 0 warning
+
 ### v0.2.0 — Phase 191 (2026-03-20)
 - **PKI Key Usage corrigé** (Phase 190) : certificats X.509 avec `digitalSignature` correct — résout curl SSL erreur 60 "unsuitable certificate purpose"
 - **Gossip TLS retry backoff** (Phase 191) : reconnexion automatique après échec hot-swap (backoff 10 s → 30 s → 60 s), alerte admin après 3 échecs consécutifs
@@ -203,3 +215,4 @@ curl -LO https://github.com/Solivram/solivram-releases/releases/download/v0.2.0/
 ---
 
 *solivram — Jenka Nauta — France — 2026*
+
