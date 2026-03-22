@@ -31,7 +31,7 @@
 | Type       | Server / Daemon                     |
 | Origin     | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 208 — 1344 tests passed             |
+| Phase      | 211 — 1370 tests passed             |
 
 ---
 
@@ -173,6 +173,18 @@ sudo dpkg -r solivram
 ---
 
 ## Changelog
+
+### v0.2.0 — Phase 211 (2026-03-22) — Complete memory audit
+- **Memory audit** (Phases 209–211): 13 issues identified and resolved (2 CRITICAL, 4 HIGH, 4 MEDIUM, 3 COMPLIANT)
+- **RateLimiter TTL purge** (Phase 209): `DashMap::retain()` + `RETENTION_MULT=10` constant — eliminates unbounded growth
+- **JenkaKv watch capacity** (Phase 209): `WATCH_BROADCAST_CAPACITY=1024` + `Arc<AtomicU64>` drop counter — loss detection
+- **LookupCache expiry filter** (Phase 209): expired tokens filtered at HashMap rebuild — no memory leak
+- **EventBus capacity** (Phase 210): `EVENTBUS_DEFAULT_CAPACITY=256` + drop counter shared between clones
+- **KV watch bulkhead** (Phase 210): `MAX_KV_WATCH_ENTRIES=1000` — bounds DashMap iteration
+- **Audit VecDeque** (Phase 210): `MAX_AUDIT_ENTRIES=100` constant — replaces magic number
+- **ColdTier bulkhead** (Phase 211): `Semaphore::try_acquire()` + `N_MAX_COLD_READS=4` — caps at 4×256 MiB concurrent reads
+- **Ordering::Relaxed doc** (Phase 211): exhaustive justification in `metrics.rs` — no logic change
+- 1370 tests · clean build · clippy 0 warnings
 
 ### v0.2.0 — Phase 208 (2026-03-22)
 - **PKI CA Fingerprint TOFU** (Phase 207): `GET /api/pki/ca/fingerprint` (public) + `GET /api/pki/ca/cert` (Bearer) — chain/root/intermediate PEM · `/etc/solivram/pki_fingerprint.txt` written at startup
