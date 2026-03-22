@@ -26,12 +26,12 @@
 |------------|-------------------------------------|
 | Author     | Jenka Nauta                         |
 | Version    | 0.2.0                               |
-| Date       | 2026-03-21                          |
+| Date       | 2026-03-22                          |
 | Licence    | MIT                                 |
 | Type       | Server / Daemon                     |
 | Origin     | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 205 — 1325 tests passed             |
+| Phase      | 208 — 1344 tests passed             |
 
 ---
 
@@ -173,6 +173,12 @@ sudo dpkg -r solivram
 ---
 
 ## Changelog
+
+### v0.2.0 — Phase 208 (2026-03-22)
+- **PKI CA Fingerprint TOFU** (Phase 207): `GET /api/pki/ca/fingerprint` (public) + `GET /api/pki/ca/cert` (Bearer) — chain/root/intermediate PEM · `/etc/solivram/pki_fingerprint.txt` written at startup
+- **PkiRedbGuard** (Phase 208): `pki.redb` tampering detection every 60s · partial SHA-256 (8KB header+tail) + full hash if anomaly · `Zeroizing<[u8;32]>` + `mlock()` · detection window ≤ 60s · Prometheus metrics `pki_redb_tampered_total`
+- `/api/security/status` +3 fields: `pki_redb_hash_ok`, `pki_redb_tampered`, `pki_ca_mismatch`
+- 1344 tests · clean build · clippy 0 warnings
 
 ### v0.2.0 — Phase 205 (2026-03-21)
 - **Raft peer address fix** (Phase 192): peer port correctly derived from local port → Raft port
