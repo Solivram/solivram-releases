@@ -27,7 +27,7 @@
 | Type       | Serveur / Daemon                    |
 | Origine    | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 208 — 1344 tests validés            |
+| Phase      | 211 — 1370 tests validés            |
 
 ---
 
@@ -169,6 +169,18 @@ sudo dpkg -r solivram
 ---
 
 ## Changelog
+
+### v0.2.0 — Phase 211 (2026-03-22) — Audit mémoire complet
+- **Audit mémoire** (Phases 209–211) : 13 issues identifiées et traitées (2 CRITIQUES, 4 HAUTES, 4 MOYENNES, 3 CONFORMES)
+- **RateLimiter TTL purge** (Phase 209) : `DashMap::retain()` + constante `RETENTION_MULT=10` — élimine la croissance illimitée
+- **JenkaKv watch capacity** (Phase 209) : `WATCH_BROADCAST_CAPACITY=1024` + compteur `Arc<AtomicU64>` drops — détection des pertes
+- **LookupCache expiry filter** (Phase 209) : exclusion des tokens expirés au rebuild — pas de fuite HashMap
+- **EventBus capacity** (Phase 210) : `EVENTBUS_DEFAULT_CAPACITY=256` + compteur drops partagé entre clones
+- **KV watch bulkhead** (Phase 210) : `MAX_KV_WATCH_ENTRIES=1000` — borne l'itération DashMap
+- **Audit VecDeque** (Phase 210) : constante `MAX_AUDIT_ENTRIES=100` — remplacement du magic number
+- **ColdTier bulkhead** (Phase 211) : `Semaphore::try_acquire()` + `N_MAX_COLD_READS=4` — plafond 4×256 MiB simultanés
+- **Ordering::Relaxed doc** (Phase 211) : justification exhaustive dans `metrics.rs` — pas de changement logique
+- 1370 tests · build propre · clippy 0 warning
 
 ### v0.2.0 — Phase 208 (2026-03-22)
 - **PKI CA Fingerprint TOFU** (Phase 207) : `GET /api/pki/ca/fingerprint` (public) + `GET /api/pki/ca/cert` (Bearer) — chain/root/intermediate PEM · `/etc/solivram/pki_fingerprint.txt` écrit au démarrage
