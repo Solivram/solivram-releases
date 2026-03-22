@@ -178,6 +178,7 @@ sudo dpkg -r solivram
 - **PKI CA Fingerprint TOFU** (Phase 207): `GET /api/pki/ca/fingerprint` (public) + `GET /api/pki/ca/cert` (Bearer) — chain/root/intermediate PEM · `/etc/solivram/pki_fingerprint.txt` written at startup
 - **PkiRedbGuard** (Phase 208): `pki.redb` tampering detection every 60s · partial SHA-256 (8KB header+tail) + full hash if anomaly · `Zeroizing<[u8;32]>` + `mlock()` · detection window ≤ 60s · Prometheus metrics `pki_redb_tampered_total`
 - `/api/security/status` +3 fields: `pki_redb_hash_ok`, `pki_redb_tampered`, `pki_ca_mismatch`
+- **Package fix**: `/etc/solivram/` chmod `750` → `770` — solivram group can now create `pki_fingerprint.txt` at startup
 - 1344 tests · clean build · clippy 0 warnings
 
 ### v0.2.0 — Phase 205 (2026-03-21)
