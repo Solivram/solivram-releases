@@ -22,12 +22,12 @@
 |------------|-------------------------------------|
 | Auteur     | Jenka Nauta                         |
 | Version    | 0.2.0                               |
-| Date       | 2026-03-22                          |
+| Date       | 2026-03-23                          |
 | Licence    | MIT                                 |
 | Type       | Serveur / Daemon                    |
 | Origine    | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 211 — 1370 tests validés            |
+| Phase      | 212 — 1370 tests validés            |
 
 ---
 
@@ -169,6 +169,12 @@ sudo dpkg -r solivram
 ---
 
 ## Changelog
+
+### v0.2.0 — Phase 212 (2026-03-23) — Correction anomalies démarrage
+- **PkiRedbGuard faux positif** (A1) : `pki_guard.init()` déplacé après TOUTES les écritures PKI du démarrage (secrets ×3, gossip cert, TLS API cert) — élimine la fausse alarme au tick=0 (`0u64.is_multiple_of(600)==true`)
+- **EventBus WARN aucun abonné** (A2) : `alerte_rx = bus.subscribe()` créé dans `start()` AVANT `publish(AppStarted)` — récepteur passé en paramètre à `run_loop()`, plus de perte d'événements au démarrage
+- **Build propre** : `rm -rf target/` + `rm data/*.redb` avant `cargo build --release` — binaire `2026-03-23 10:14`
+- 1370 tests · clippy 0 warning · fmt ✅
 
 ### v0.2.0 — Phase 211 (2026-03-22) — Audit mémoire complet
 - **Audit mémoire** (Phases 209–211) : 13 issues identifiées et traitées (2 CRITIQUES, 4 HAUTES, 4 MOYENNES, 3 CONFORMES)
