@@ -27,7 +27,7 @@
 | Type       | Serveur / Daemon                    |
 | Origine    | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 212 — 1370 tests validés            |
+| Phase      | 213 — 1370 tests validés            |
 
 ---
 
@@ -169,6 +169,12 @@ sudo dpkg -r solivram
 ---
 
 ## Changelog
+
+### v0.2.0 — Phase 213 (2026-03-23) — Audit démarrage + corrections logs + sync config
+- **Double log NodeIdentity** : `tracing::info!` déplacé des fonctions communes (`generer_avec_san_et_domaine`) vers les appelants (`emettre_gossip_*` / `emettre_api_*`) — labels distincts "gossip" et "API TLS" dans les logs
+- **Sync `config/default.toml`** : source synchronisée avec le template postinst installé (+`env`, `log_level`, `host`, `port`, `token_ttl_secs`, `admin_token`, `max_body_bytes`)
+- **Audit démarrage** : 10 configurations terrain analysées — nftables filtre IP/port uniquement, deux TLS layers distincts, `discovery_enabled` ≠ `mdns_enabled`
+- 1370 tests · clippy 0 warning · fmt ✅
 
 ### v0.2.0 — Phase 212 (2026-03-23) — Correction anomalies démarrage
 - **PkiRedbGuard faux positif** (A1) : `pki_guard.init()` déplacé après TOUTES les écritures PKI du démarrage (secrets ×3, gossip cert, TLS API cert) — élimine la fausse alarme au tick=0 (`0u64.is_multiple_of(600)==true`)
