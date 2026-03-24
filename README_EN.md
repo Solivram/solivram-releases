@@ -31,7 +31,7 @@
 | Type       | Post-Quantum Infrastructure Engine  |
 | Origin     | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 220 — 1469 tests passed             |
+| Phase      | 224 — 1479 tests passed             |
 
 ---
 
@@ -174,6 +174,14 @@ sudo dpkg -r solivram
 
 ## Changelog
 
+### v0.2.0 — Phases 221–224 (2026-03-24) — Firewall integration across all execution modes
+- **ApiMode** (Phase 221): publishes `PortBound{api,port}` + `NetworkModeChanged` at startup — standalone NftablesManager initialized in api-only mode
+- **UnifiedMode** (Phase 222): HeadlessMode opens API port in firewall after `run_loop()` init (resolves `tokio::spawn` timing)
+- **TerminalMode TUI** (Phase 223): `MonitoringPanel` displays `fw:strict` / `fw:open` / `fw:N/A` in real time
+- **GuiMode egui** (Phase 224): "Firewall outbound" row in PQC Security panel — green/yellow/grey colors + FR/EN translations
+- **Clean build**: `rm -rf target/` + `cargo build --release` — binary `2026-03-24`
+- 1479 tests · clippy 0 warnings · fmt ✅
+
 ### v0.2.0 — Phases 215–220 (2026-03-24) — NftablesManager kernel firewall + full wiring
 - **NftablesManager** (Phases 215–220): 100% Rust kernel firewall module via `nft -f /dev/stdin` (`cap_net_admin`)
 - **Kernel INBOUND firewall**: 5 chains + 9 nftables sets — `input` policy drop, SYN flood rate limit, cluster peers/API/Prometheus dual-stack IPv4+IPv6 allowlist
@@ -183,7 +191,6 @@ sudo dpkg -r solivram
 - **60s health check**: `nft list set` → mirror comparison → automatic restoration if divergence detected
 - **Prometheus observability**: `jenka.firewall.batch_flushes_total`, `jenka.firewall.integrity_checks_total`, `jenka.firewall.divergences_detected_total`
 - **`/api/security/status`** +4 fields: `firewall_mode`, `firewall_outbound_mode`, `firewall_peers_v4_count`, `firewall_peers_v6_count`
-- **Clean build**: `rm -rf target/` + `cargo build --release` — binary `2026-03-24 04:02`
 - 1469 tests · clippy 0 warnings · fmt ✅
 
 ### v0.2.0 — Phase 212 (2026-03-23) — Startup anomalies fix
