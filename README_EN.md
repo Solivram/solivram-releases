@@ -26,12 +26,12 @@
 |------------|-------------------------------------|
 | Author     | Jenka Nauta                         |
 | Version    | 0.2.0                               |
-| Date       | 2026-03-23                          |
+| Date       | 2026-03-24                          |
 | Licence    | MIT                                 |
 | Type       | Server / Daemon                     |
 | Origin     | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 212 — 1370 tests passed             |
+| Phase      | 220 — 1469 tests passed             |
 
 ---
 
@@ -173,6 +173,18 @@ sudo dpkg -r solivram
 ---
 
 ## Changelog
+
+### v0.2.0 — Phases 215–220 (2026-03-24) — NftablesManager kernel firewall + full wiring
+- **NftablesManager** (Phases 215–220): 100% Rust kernel firewall module via `nft -f /dev/stdin` (`cap_net_admin`)
+- **Kernel INBOUND firewall**: 5 chains + 9 nftables sets — `input` policy drop, SYN flood rate limit, cluster peers/API/Prometheus dual-stack IPv4+IPv6 allowlist
+- **Kernel OUTBOUND firewall**: `chain output` policy drop in `network.mode=strict` — only allowed: loopback, established connections, cluster peers, DNS 53, mDNS 5353 if multicast active. Ports 443/80 blocked at kernel level.
+- **30s bootstrap**: temporary rule without IP source filter → seeds join → strict IP filter activated (`completer_bootstrap()`)
+- **100ms HP batching**: grouped operations (open/close port, add/remove peer) in a single nft call
+- **60s health check**: `nft list set` → mirror comparison → automatic restoration if divergence detected
+- **Prometheus observability**: `jenka.firewall.batch_flushes_total`, `jenka.firewall.integrity_checks_total`, `jenka.firewall.divergences_detected_total`
+- **`/api/security/status`** +4 fields: `firewall_mode`, `firewall_outbound_mode`, `firewall_peers_v4_count`, `firewall_peers_v6_count`
+- **Clean build**: `rm -rf target/` + `cargo build --release` — binary `2026-03-24 04:02`
+- 1469 tests · clippy 0 warnings · fmt ✅
 
 ### v0.2.0 — Phase 212 (2026-03-23) — Startup anomalies fix
 - **PkiRedbGuard false positive** (A1): `pki_guard.init()` moved after ALL startup PKI writes (secrets ×3, gossip cert, TLS API cert) — eliminates false alarm at tick=0 (`0u64.is_multiple_of(600)==true`)
