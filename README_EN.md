@@ -28,7 +28,7 @@
 | Version    | 0.2.0                               |
 | Date       | 2026-03-24                          |
 | Licence    | MIT                                 |
-| Type       | Server / Daemon                     |
+| Type       | Post-Quantum Infrastructure Engine  |
 | Origin     | France                              |
 | Github     | https://github.com/Solivram         |
 | Phase      | 220 — 1469 tests passed             |
