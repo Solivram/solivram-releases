@@ -22,12 +22,12 @@
 |------------|-------------------------------------|
 | Auteur     | Jenka Nauta                         |
 | Version    | 0.2.0                               |
-| Date       | 2026-03-23                          |
+| Date       | 2026-03-24                          |
 | Licence    | MIT                                 |
 | Type       | Serveur / Daemon                    |
 | Origine    | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 213 — 1370 tests validés            |
+| Phase      | 220 — 1469 tests validés            |
 
 ---
 
@@ -169,6 +169,18 @@ sudo dpkg -r solivram
 ---
 
 ## Changelog
+
+### v0.2.0 — Phases 215–220 (2026-03-24) — NftablesManager pare-feu kernel + câblage complet
+- **NftablesManager** (Phases 215–220) : module firewall 100% Rust via `nft -f /dev/stdin` (`cap_net_admin`)
+- **Pare-feu kernel INBOUND** : 5 chains + 9 sets nftables — `input` policy drop, SYN flood rate limit, allowlist cluster peers/API/Prometheus dual-stack IPv4+IPv6
+- **Pare-feu kernel OUTBOUND** : `chain output` policy drop en `network.mode=strict` — seuls autorisés : loopback, connexions établies, cluster peers, DNS 53, mDNS 5353 si multicast actif. Ports 443/80 bloqués au niveau kernel.
+- **Bootstrap 30s** : règle temporaire sans filtre IP source → seeds rejoignent → filtre IP strict activé (`completer_bootstrap()`)
+- **Batching HP 100ms** : opérations groupées (ouvrir/fermer port, ajouter/retirer pair) en 1 seul appel nft
+- **Health check 60s** : `nft list set` → comparaison miroirs mémoire → restauration automatique si divergence
+- **Observabilité Prometheus** : `jenka.firewall.batch_flushes_total`, `jenka.firewall.integrity_checks_total`, `jenka.firewall.divergences_detected_total`
+- **`/api/security/status`** +4 champs : `firewall_mode`, `firewall_outbound_mode`, `firewall_peers_v4_count`, `firewall_peers_v6_count`
+- **Build propre** : `rm -rf target/` + `cargo build --release` — binaire `2026-03-24 04:02`
+- 1469 tests · clippy 0 warning · fmt ✅
 
 ### v0.2.0 — Phase 213 (2026-03-23) — Audit démarrage + corrections logs + sync config
 - **Double log NodeIdentity** : `tracing::info!` déplacé des fonctions communes (`generer_avec_san_et_domaine`) vers les appelants (`emettre_gossip_*` / `emettre_api_*`) — labels distincts "gossip" et "API TLS" dans les logs
