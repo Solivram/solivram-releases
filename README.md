@@ -27,7 +27,7 @@
 | Type       | Post-Quantum Infrastructure Engine  |
 | Origine    | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 220 — 1469 tests validés            |
+| Phase      | 224 — 1479 tests validés            |
 
 ---
 
@@ -170,6 +170,14 @@ sudo dpkg -r solivram
 
 ## Changelog
 
+### v0.2.0 — Phases 221–224 (2026-03-24) — Intégration firewall tous modes d'exécution
+- **ApiMode** (Phase 221) : publie `PortBound{api,port}` + `NetworkModeChanged` au démarrage — NftablesManager standalone en mode api seul
+- **UnifiedMode** (Phase 222) : HeadlessMode ouvre le port API dans le firewall après `run_loop()` init (résolution timing `tokio::spawn`)
+- **TerminalMode TUI** (Phase 223) : `MonitoringPanel` affiche `fw:strict` / `fw:ouvert` / `fw:N/A` en temps réel
+- **GuiMode egui** (Phase 224) : panneau "Firewall outbound" dans Sécurité PQC — couleurs vert/jaune/gris + traductions FR/EN
+- **Build propre** : `rm -rf target/` + `cargo build --release` — binaire `2026-03-24`
+- 1479 tests · clippy 0 warning · fmt ✅
+
 ### v0.2.0 — Phases 215–220 (2026-03-24) — NftablesManager pare-feu kernel + câblage complet
 - **NftablesManager** (Phases 215–220) : module firewall 100% Rust via `nft -f /dev/stdin` (`cap_net_admin`)
 - **Pare-feu kernel INBOUND** : 5 chains + 9 sets nftables — `input` policy drop, SYN flood rate limit, allowlist cluster peers/API/Prometheus dual-stack IPv4+IPv6
@@ -179,7 +187,6 @@ sudo dpkg -r solivram
 - **Health check 60s** : `nft list set` → comparaison miroirs mémoire → restauration automatique si divergence
 - **Observabilité Prometheus** : `jenka.firewall.batch_flushes_total`, `jenka.firewall.integrity_checks_total`, `jenka.firewall.divergences_detected_total`
 - **`/api/security/status`** +4 champs : `firewall_mode`, `firewall_outbound_mode`, `firewall_peers_v4_count`, `firewall_peers_v6_count`
-- **Build propre** : `rm -rf target/` + `cargo build --release` — binaire `2026-03-24 04:02`
 - 1469 tests · clippy 0 warning · fmt ✅
 
 ### v0.2.0 — Phase 213 (2026-03-23) — Audit démarrage + corrections logs + sync config
