@@ -22,12 +22,12 @@
 |------------|-------------------------------------|
 | Auteur     | Jenka Nauta                         |
 | Version    | 0.2.0                               |
-| Date       | 2026-03-24                          |
+| Date       | 2026-03-27                          |
 | Licence    | MIT                                 |
 | Type       | Post-Quantum Infrastructure Engine  |
 | Origine    | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 224 — 1479 tests validés            |
+| Phase      | 225 — 1478 tests validés            |
 
 ---
 
@@ -169,6 +169,13 @@ sudo dpkg -r solivram
 ---
 
 ## Changelog
+
+### v0.2.0 — Phase 225 (2026-03-27) — Fix firewall_mode:unavailable + compatibilité sudo-rs / Linux 7.0
+- **Ambient capabilities** : `nft_cmd()` helper avec `pre_exec` → `SYS_capget` + `SYS_capset` + `prctl(PR_CAP_AMBIENT_RAISE, CAP_NET_ADMIN)` — `nft` hérite `cap_net_admin` via ambient → `firewall_mode: active`
+- **Cause résolue** : `CapInh=0`, `CapAmb=0` dans le processus solivram → `nft` spawné sans capability → EPERM. Fix : propagation ciblée dans le child uniquement après `fork()`
+- ✅ **Compatibilité sudo-rs** : solivram est compatible avec [sudo-rs](https://github.com/trifectatechfoundation/sudo-rs), la réécriture Rust de sudo, sur Linux 7.0
+- **Build propre** : `rm -rf target/` + `cargo build --release` — binaire `2026-03-27`
+- 1478 tests · clippy 0 warning · fmt ✅
 
 ### v0.2.0 — Phases 221–224 (2026-03-24) — Intégration firewall tous modes d'exécution
 - **ApiMode** (Phase 221) : publie `PortBound{api,port}` + `NetworkModeChanged` au démarrage — NftablesManager standalone en mode api seul
