@@ -108,7 +108,7 @@ solivram --config /etc/solivram/default.toml api
 ## Uninstall
 
 ```bash
-sudo dpkg -r solivram
+sudo apt remove solivram
 ```
 
 ---
