@@ -26,12 +26,12 @@
 |------------|-------------------------------------|
 | Author     | Jenka Nauta                         |
 | Version    | 0.2.0                               |
-| Date       | 2026-03-27                          |
+| Date       | 2026-03-28                          |
 | Licence    | MIT                                 |
 | Type       | Post-Quantum Infrastructure Engine  |
 | Origin     | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 225 — 1478 tests passed             |
+| Phase      | 229 — 1475 tests passed             |
 
 ---
 
@@ -173,6 +173,16 @@ sudo dpkg -r solivram
 ---
 
 ## Changelog
+
+### v0.2.0 — Phases 226–229 (2026-03-28) — Security + performance audit
+- **S1**: 5s timeout on Raft TCP pool lock — eliminates indefinite block on dead connection
+- **P1+P2**: `fn hex_sha3()` HMAC hot path — 0 intermediate allocation per Raft message
+- **S2/S3**: `.expect()` production → `match+panic!()` · UNIX_EPOCH clock → `unwrap_or_else + log`
+- **S4**: sweep ~80 `.expect()`/`.unwrap()` in `#[cfg(test)]` (~20 files + nftables)
+- **P3/P4**: `Vec::with_capacity` DNS · `DashMap<SocketAddr>` TCP pool (inline key, no alloc)
+- **F1/F2/F3**: Phase 189 dead code removed · `input.rs` placeholder cleaned up
+- Clean build: `rm -rf target/` + `cargo build --release` — binary `2026-03-28`
+- 1475 tests · clippy 0 warnings · fmt ✅
 
 ### v0.2.0 — Phase 225 (2026-03-27) — Fix firewall_mode:unavailable + sudo-rs / Linux 7.0 compatibility
 - **Ambient capabilities**: `nft_cmd()` helper with `pre_exec` → `SYS_capget` + `SYS_capset` + `prctl(PR_CAP_AMBIENT_RAISE, CAP_NET_ADMIN)` — `nft` inherits `cap_net_admin` via ambient → `firewall_mode: active`
