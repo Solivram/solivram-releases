@@ -31,7 +31,7 @@
 | Type       | Post-Quantum Infrastructure Engine  |
 | Origin     | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 229 — 1475 tests passed             |
+| Phase      | 244 — 1607 tests passed             |
 
 ---
 
@@ -180,6 +180,33 @@ sudo rm -rf /var/lib/solivram/ /etc/solivram/
 ---
 
 ## Changelog
+
+### v0.2.0 — Phase 244 (2026-03-29) — Fix NftablesManager + postrm auto-cleanup + 0 warning
+
+- **Critical fix**: `ip6 exthdr frag drop` → `exthdr frag exists drop` — nftables `inet solivram` table now created correctly at startup → firewall active
+- **Root cause**: analogy error with IPv4 `ip frag-off` — `exthdr` is a standalone nftables expression, not a sub-field of `ip6`
+- **postrm**: automatic cleanup on purge — CA files in `/usr/local/share/ca-certificates/` + `/tmp/solivram-*` + NSS databases (Firefox/Chromium) via `certutil`
+- **postinst**: "BEFORE REINSTALL" 7-step procedure added to `solivram_mise_en_garde.txt`
+- 12 unused imports removed from test modules — 0 compiler warnings ✅
+- 1607 tests · clippy 0 warnings · fmt ✅
+
+### v0.2.0 — Phases 241–243 (2026-03-29) — P1 Pillar 1: Backup & Restore complete
+
+- **BackupEngine** (Phase 241): encrypted snapshots AES-256-GCM per-file, SHA3-256 manifest, CLI `backup` / `backup --verify` / `restore`
+- **RemoteUploader** (Phase 242): 3 backends (`path` NFS/CIFS · `s3` aws CLI · `sftp` rsync+ssh), anti-path-traversal, 300s subprocess timeout, CLI `backup --remote`
+- **BackupScheduler** (Phase 243): tokio background task, `backup_interval_secs`, SharedState `backup:last_at/status`, CLI `backup --auto`
+- Clean build: `rm -rf target/` + `cargo build --release` — binary `2026-03-29`
+- 1607 tests · clippy 0 warnings · fmt ✅
+
+### v0.2.0 — Phases 230–240 (2026-03-29) — Inter-cluster Federation
+
+- **FederationService** (Phase 230): 14 REST endpoints `/api/federation/*`, ML-DSA-65 + HMAC-SHA3-256 signed messages, federation.redb store
+- **FederationTrustStore** (Phase 231): trust states (Pending/Trusted/Revoked/Blocked), TOFU-compatible trust decision engine
+- **FederationEnforcer** (Phase 232): policy enforcement (open/strict/isolated modes), DecisionEnforcer RBAC
+- **FederationTransport** (Phase 233): mTLS inter-cluster transport, token derivation `deriver_hmac_key_federation`
+- **FederationDiscovery** (Phase 234): DNS + direct endpoint resolution, multi-address support
+- **FederationSyncService** (Phase 235–240): KV/CRL synchronization, gossip propagation, cluster health monitoring
+- 132 federation tests · NftablesManager `solivram_filter_federation` sets · API RBAC Admin
 
 ### v0.2.0 — Phases 226–229 (2026-03-28) — Security + performance audit
 - **S1**: 5s timeout on Raft TCP pool lock — eliminates indefinite block on dead connection
