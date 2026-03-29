@@ -22,12 +22,12 @@
 |------------|-------------------------------------|
 | Auteur     | Jenka Nauta                         |
 | Version    | 0.2.0                               |
-| Date       | 2026-03-28                          |
+| Date       | 2026-03-29                          |
 | Licence    | MIT                                 |
 | Type       | Post-Quantum Infrastructure Engine  |
 | Origine    | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 229 — 1475 tests validés            |
+| Phase      | 243 — 1607 tests validés            |
 
 ---
 
@@ -176,6 +176,22 @@ sudo rm -rf /var/lib/solivram/ /etc/solivram/
 ---
 
 ## Changelog
+
+### v0.2.0 — Phases 241–243 (2026-03-29) — P1 Pilier 1 : Sauvegarde & Restauration complète
+- **BackupEngine** (Phase 241) : snapshots chiffrés AES-256-GCM par fichier, manifest SHA3-256, AAD anti-swap par chemin
+- **RemoteUploader** (Phase 242) : upload vers NFS/S3/SFTP — exec direct sans shell, anti path-traversal, timeout 300s
+- **BackupScheduler** (Phase 243) : tâche tokio automatique, `backup_interval_secs`, SharedState `backup:last_at/status`
+- **CLI** : `solivram backup` · `backup --verify` · `backup --remote` · `backup --auto` · `restore`
+- Build propre : `rm -rf target/` + `cargo build --release` — binaire `2026-03-29`
+- 1607 tests · clippy 0 warning · fmt ✅
+
+### v0.2.0 — Phases 230–240 (2026-03-29) — Fédération inter-clusters
+- **Canal mTLS** port 8433 : `WebPkiClientVerifier` multi-CA, rebuild TlsAcceptor à chaud, PQC optionnel
+- **Synchronisation KV/CRL** : préfixes autorisés, tombstones KV anti-cycle, HMAC-SHA3-256 par entrée CRL
+- **Modes** : `strict` (quarantaine + approve/reject) · `open` (auto-accept) · nftables sets `federation_peers_ipv4/v6`
+- **API** : `GET/POST /api/federation/*` (status, peers, audit, approve, reject, sync)
+- **config.toml** : `[federation] enabled=false` (désactivé par défaut, zéro impact)
+- 1584 tests (Phase 240) · clippy 0 warning · fmt ✅
 
 ### v0.2.0 — Phases 226–229 (2026-03-28) — Audit sécurité + performance
 - **S1** : timeout 5s sur lock() pool TCP Raft — fin du blocage indéfini sur connexion morte
