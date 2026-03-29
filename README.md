@@ -27,7 +27,7 @@
 | Type       | Post-Quantum Infrastructure Engine  |
 | Origine    | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 243 — 1607 tests validés            |
+| Phase      | 244 — 1607 tests validés            |
 
 ---
 
@@ -176,6 +176,14 @@ sudo rm -rf /var/lib/solivram/ /etc/solivram/
 ---
 
 ## Changelog
+
+### v0.2.0 — Phase 244 (2026-03-29) — Fix NftablesManager + postrm auto-cleanup + 0 warning
+
+- **Fix critique** : `ip6 exthdr frag drop` → `exthdr frag exists drop` — firewall nftables désormais actif au démarrage
+- **postrm** : nettoyage automatique CA système + `/tmp` + NSS navigateurs à la purge
+- **postinst** : procédure AVANT RÉINSTALLATION en 7 étapes dans `solivram_mise_en_garde.txt`
+- 12 imports inutilisés supprimés — 0 warning compilateur ✅
+- 1607 tests · clippy 0 warning · fmt ✅
 
 ### v0.2.0 — Phases 241–243 (2026-03-29) — P1 Pilier 1 : Sauvegarde & Restauration complète
 - **BackupEngine** (Phase 241) : snapshots chiffrés AES-256-GCM par fichier, manifest SHA3-256, AAD anti-swap par chemin
