@@ -22,12 +22,12 @@
 |------------|-------------------------------------|
 | Auteur     | Jenka Nauta                         |
 | Version    | 0.2.0                               |
-| Date       | 2026-03-29                          |
+| Date       | 2026-03-30                          |
 | Licence    | MIT                                 |
 | Type       | Post-Quantum Infrastructure Engine  |
 | Origine    | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 244 — 1607 tests validés            |
+| Phase      | 247 — 1622 tests validés            |
 
 ---
 
@@ -177,13 +177,23 @@ sudo rm -rf /var/lib/solivram/ /etc/solivram/
 
 ## Changelog
 
-### v0.2.0 — Phase 244 (2026-03-29) — Fix NftablesManager + postrm auto-cleanup + 0 warning
+### v0.2.0 — Phase 247 (2026-03-30) — Whitelist outbound déclarative + rechargement à chaud
 
-- **Fix critique** : `ip6 exthdr frag drop` → `exthdr frag exists drop` — firewall nftables désormais actif au démarrage
-- **postrm** : nettoyage automatique CA système + `/tmp` + NSS navigateurs à la purge
-- **postinst** : procédure AVANT RÉINSTALLATION en 7 étapes dans `solivram_mise_en_garde.txt`
-- 12 imports inutilisés supprimés — 0 warning compilateur ✅
-- 1607 tests · clippy 0 warning · fmt ✅
+- **`[firewall.outbound_services]`** : whitelist déclarative dans `config.toml` — fail-secure (défauts `dhcp=true ntp=true`, reste `false/[]`)
+- **Configurable** : `dhcp` · `ntp` · `https` · `http` · `extra_tcp_ports` · `extra_udp_ports` · `allowed_destinations_v4/v6`
+- **Hot-reload** : `POST /api/config/reload` → rebuild `chain output` + `chain input` sans redémarrage
+- **Matrix situations** : prod-solo / prod-IP-statique / dev-solo / staging / headless-embed documentée dans `config.toml`
+- 1622 tests · clippy 0 warning · fmt ✅
+
+### v0.2.0 — Phases 244–246 (2026-03-29/30) — Fixes firewall critiques (TP terrain)
+
+- **Phase 244** : `exthdr frag exists drop` (fix IPv6 fragment) — firewall nftables actif au démarrage, 12 imports nettoyés
+- **Phase 245 BUG-1** : `stop()` `nft flush table` → `nft delete table` — réseau non bloqué après arrêt solivram
+- **Phase 245 BUG-2** : output fédération absent en mode strict → half-duplex corrigé (`@federation_peers_ipv4/v6 tcp 8433`)
+- **Phase 246 BUG-3** : mode ouvert bloquait internet → input chain rebuild + `ct state established,related accept`
+- **Phase 246 BUG-4** : DHCP bloqué → WiFi sans IP au démarrage (`ERR_INTERNET_DISCONNECTED`) → UDP 67 autorisé
+- **Phase 246 NTP** : NTP absent → horloge dérive → PKI invalide → mTLS échoue → UDP 123 autorisé
+- 1616 tests Phase 246 · clippy 0 warning · fmt ✅
 
 ### v0.2.0 — Phases 241–243 (2026-03-29) — P1 Pilier 1 : Sauvegarde & Restauration complète
 - **BackupEngine** (Phase 241) : snapshots chiffrés AES-256-GCM par fichier, manifest SHA3-256, AAD anti-swap par chemin
