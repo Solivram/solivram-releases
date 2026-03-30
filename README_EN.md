@@ -31,7 +31,7 @@
 | Type       | Post-Quantum Infrastructure Engine  |
 | Origin     | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 244 — 1607 tests passed             |
+| Phase      | 247 — 1622 tests passed             |
 
 ---
 
@@ -181,14 +181,23 @@ sudo rm -rf /var/lib/solivram/ /etc/solivram/
 
 ## Changelog
 
-### v0.2.0 — Phase 244 (2026-03-29) — Fix NftablesManager + postrm auto-cleanup + 0 warning
+### v0.2.0 — Phase 247 (2026-03-30) — Declarative outbound whitelist + hot-reload
 
-- **Critical fix**: `ip6 exthdr frag drop` → `exthdr frag exists drop` — nftables `inet solivram` table now created correctly at startup → firewall active
-- **Root cause**: analogy error with IPv4 `ip frag-off` — `exthdr` is a standalone nftables expression, not a sub-field of `ip6`
-- **postrm**: automatic cleanup on purge — CA files in `/usr/local/share/ca-certificates/` + `/tmp/solivram-*` + NSS databases (Firefox/Chromium) via `certutil`
-- **postinst**: "BEFORE REINSTALL" 7-step procedure added to `solivram_mise_en_garde.txt`
-- 12 unused imports removed from test modules — 0 compiler warnings ✅
-- 1607 tests · clippy 0 warnings · fmt ✅
+- **`[firewall.outbound_services]`**: declarative whitelist in `config.toml` — fail-secure defaults (`dhcp=true ntp=true`, rest `false/[]`)
+- **Configurable**: `dhcp` · `ntp` · `https` · `http` · `extra_tcp_ports` · `extra_udp_ports` · `allowed_destinations_v4/v6`
+- **Hot-reload**: `POST /api/config/reload` → rebuilds `chain output` + `chain input` without restart
+- **Situation matrix**: prod-solo / prod-static-IP / dev-solo / staging / headless-embed documented in `config.toml`
+- 1622 tests · clippy 0 warnings · fmt ✅
+
+### v0.2.0 — Phases 244–246 (2026-03-29/30) — Critical firewall fixes (field TP)
+
+- **Phase 244**: `exthdr frag exists drop` (IPv6 fragment fix) — firewall active at startup, 12 imports cleaned
+- **Phase 245 BUG-1**: `stop()` `nft flush table` → `nft delete table` — network not blocked after solivram restart
+- **Phase 245 BUG-2**: federation output missing in strict mode → half-duplex → fixed (`@federation_peers_ipv4/v6 tcp 8433`)
+- **Phase 246 BUG-3**: open mode blocked internet → input chain rebuild + `ct state established,related accept`
+- **Phase 246 BUG-4**: DHCP blocked → WiFi no IP at startup (`ERR_INTERNET_DISCONNECTED`) → UDP 67 allowed
+- **Phase 246 NTP**: NTP missing → clock drift → PKI invalid → mTLS failure → UDP 123 allowed
+- 1616 tests Phase 246 · clippy 0 warnings · fmt ✅
 
 ### v0.2.0 — Phases 241–243 (2026-03-29) — P1 Pillar 1: Backup & Restore complete
 
