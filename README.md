@@ -31,7 +31,7 @@ Package Solivram compatible ARM64 bientôt disponible.
 | Type       | Post-Quantum Infrastructure Engine  |
 | Origine    | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 253 — 1642 tests validés            |
+| Phase      | 255 — 1653 tests validés            |
 
 ---
 
@@ -180,6 +180,14 @@ sudo rm -rf /var/lib/solivram/ /etc/solivram/
 ---
 
 ## Changelog
+
+### v0.2.0 — Phase 255 (2026-04-04) — A-SEC-255 : Protection endpoints + modes locaux
+
+- **`/api/node` + `/api/config`** → `api_protegees` — Bearer + RBAC requis (déplacés depuis public)
+- **`services[]`** retiré du JSON public `manifest.rs` — carte de reconnaissance retirée
+- **`secure_display`** : nouveau champ `[display]` — masquage icônes panels TUI/GUI en env multi-utilisateurs
+- **`require_local_auth`** : token admin requis avant démarrage terminal/GUI — comparaison temps constant
+- 11 tests ajoutés — 1642 → 1653 · clippy 0 erreur · fmt ✅
 
 ### v0.2.0 — Phases 249-253 (2026-04-04) — Audit moindre privilège outbound
 
