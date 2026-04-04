@@ -31,7 +31,7 @@
 | Type       | Post-Quantum Infrastructure Engine  |
 | Origin     | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 253 — 1642 tests passed             |
+| Phase      | 255 — 1653 tests passed             |
 
 ---
 
@@ -180,6 +180,14 @@ sudo rm -rf /var/lib/solivram/ /etc/solivram/
 ---
 
 ## Changelog
+
+### v0.2.0 — Phase 255 (2026-04-04) — A-SEC-255: Endpoint protection + local mode security
+
+- **`/api/node` + `/api/config`** → `api_protegees` — Bearer + RBAC required (moved from public)
+- **`services[]`** removed from public JSON `manifest.rs` — reconnaissance map removed
+- **`secure_display`**: new `[display]` field — masks operational data in TUI/GUI panels for multi-user environments
+- **`require_local_auth`**: admin token required before terminal/GUI startup — constant-time comparison
+- 11 tests added — 1642 → 1653 · clippy 0 errors · fmt ✅
 
 ### v0.2.0 — Phases 249-253 (2026-04-04) — Least-privilege outbound audit
 
