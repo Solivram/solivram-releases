@@ -16,18 +16,22 @@
 
 ---
 
+Package Solivram compatible ARM64 bientôt disponible.
+
+---
+
 ## Informations
 
 | Champ      | Valeur                              |
 |------------|-------------------------------------|
 | Auteur     | Jenka Nauta                         |
 | Version    | 0.2.0                               |
-| Date       | 2026-03-30                          |
+| Date       | 2026-04-04                          |
 | Licence    | MIT                                 |
 | Type       | Post-Quantum Infrastructure Engine  |
 | Origine    | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 247 — 1622 tests validés            |
+| Phase      | 248 — 1625 tests validés            |
 
 ---
 
