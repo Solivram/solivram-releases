@@ -31,7 +31,7 @@
 | Type       | Post-Quantum Infrastructure Engine  |
 | Origin     | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 248 — 1625 tests passed             |
+| Phase      | 253 — 1642 tests passed             |
 
 ---
 
@@ -180,6 +180,15 @@ sudo rm -rf /var/lib/solivram/ /etc/solivram/
 ---
 
 ## Changelog
+
+### v0.2.0 — Phases 249-253 (2026-04-04) — Least-privilege outbound audit
+
+- **A-SEC-01 (Phase 249)**: `cluster_allowed_cidrs_v4/v6 = []` — dual-mode cluster input: `[]` = dynamic (`@cluster_peers`), non-empty = static CIDR from config
+- **A-SEC-02 (Phase 250)**: `construire_script_activation_filtre_cluster()` dual-mode consistent across full firewall lifecycle
+- **A-OUT-01 (Phase 251)**: cluster output restricted to `tcp dport @cluster_listen_ports` (gossip/raft/api/federation) — least privilege
+- **A-OUT-02 (Phase 252)**: `dns_servers`/`ntp_servers` — optional destination IP filter — anti-DNS-tunneling, anti-NTP-hijacking
+- **A-OUT-03 (Phase 253)**: `AllowedDestinationPort {cidr, tcp_ports, udp_ports}` — per-port CIDR granularity + `warn!` if `allowed_destinations_v4/v6` non-empty
+- 1642 tests · clippy 0 warnings · fmt ✅
 
 ### v0.2.0 — Phase 247 (2026-03-30) — Declarative outbound whitelist + hot-reload
 
