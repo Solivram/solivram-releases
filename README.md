@@ -31,7 +31,7 @@ Package Solivram compatible ARM64 bientôt disponible.
 | Type       | Post-Quantum Infrastructure Engine  |
 | Origine    | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 248 — 1625 tests validés            |
+| Phase      | 253 — 1642 tests validés            |
 
 ---
 
@@ -180,6 +180,15 @@ sudo rm -rf /var/lib/solivram/ /etc/solivram/
 ---
 
 ## Changelog
+
+### v0.2.0 — Phases 249-253 (2026-04-04) — Audit moindre privilège outbound
+
+- **A-SEC-01 (Phase 249)** : `cluster_allowed_cidrs_v4/v6 = []` — dual-mode cluster input : `[]` = dynamique (`@cluster_peers`), non-vide = statique CIDR TOML
+- **A-SEC-02 (Phase 250)** : `construire_script_activation_filtre_cluster()` dual-mode cohérent sur tout le cycle firewall
+- **A-OUT-01 (Phase 251)** : cluster output restreint à `tcp dport @cluster_listen_ports` (gossip/raft/api/fédération) — moindre privilège
+- **A-OUT-02 (Phase 252)** : `dns_servers`/`ntp_servers` — filtre IP destination optionnel — anti-DNS-tunneling, anti-NTP-hijacking
+- **A-OUT-03 (Phase 253)** : `AllowedDestinationPort {cidr, tcp_ports, udp_ports}` — granularité port par CIDR + `warn!` si `allowed_destinations_v4/v6` non vides
+- 1642 tests · clippy 0 warning · fmt ✅
 
 ### v0.2.0 — Phase 247 (2026-03-30) — Whitelist outbound déclarative + rechargement à chaud
 
