@@ -26,12 +26,12 @@
 |------------|-------------------------------------|
 | Author     | Jenka Nauta                         |
 | Version    | 0.2.0                               |
-| Date       | 2026-04-04                          |
+| Date       | 2026-04-06                          |
 | Licence    | MIT                                 |
 | Type       | Post-Quantum Infrastructure Engine  |
 | Origin     | France                              |
 | Github     | https://github.com/Solivram         |
-| Phase      | 255 — 1653 tests passed             |
+| Phase      | 271 — 1722 tests passed             |
 
 ---
 
@@ -180,6 +180,16 @@ sudo rm -rf /var/lib/solivram/ /etc/solivram/
 ---
 
 ## Changelog
+
+### v0.2.0 — Phases 256–271 (2026-04-06) — Cognitive memory + TF-IDF + Configurable rate limiters
+
+- **Cognitive memory module**: SQLite WAL + 18 `/api/memory/*` endpoints — AES-256-GCM encrypted storage, Bearer RBAC, per-context quotas
+- **TF-IDF search engine**: cosine similarity sparse, LIKE fallback, snippet preview, SearchRateLimiter
+- **Configurable TOML rate limiters**: `[server]` global, `[memory]` contexts/search/prcsr — full backward compatibility
+- **Enriched tokenization**: compound sub-terms (`ml-kem` → `ml-kem + kem`), numeric filters, semantic bigrams
+- **CLI**: `memory:status`, `memory:contexts`, `memory:search`, `memory:reindex`, `memory:index:stats`
+- **TUI/GUI**: MemoryPanel + MemoryGuiPanel — dirty flag, update() + render_text()
+- 69 tests added — 1653 → 1722 · clippy 0 errors · fmt ✅
 
 ### v0.2.0 — Phase 255 (2026-04-04) — A-SEC-255: Endpoint protection + local mode security
 
