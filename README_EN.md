@@ -18,6 +18,11 @@
   </a>
 </p>
 
+> **GitHub version** — solivram v0.2.0 · Phase 271 · 1722 tests — open-source base version  
+> **Production-Grade version** — solivram v0.2.0 · Phase 311 · 1929 tests ✅ — available at [solivram.com](https://solivram.com)  
+>  
+> Solivram infrastructure: internal PKI JenkaCA · HTTPS TOFU node verification · internal TLS API hot-swap ArcSwap · P-256 + ML-DSA-65 signed binary · verifiable via `solivram identity:verify`
+
 ---
 
 ## Information
