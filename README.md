@@ -36,9 +36,7 @@ Package Solivram version Production-Grade disponible en production réel pour le
 **Auteur** : Jenka Nauta — France
 **Version** : 0.2.0 — 2026-07-01 — Phase 426 — 2458 tests
 **Type** : Post-Quantum Infrastructure Engine
-**En production** : [solivram.com](https://solivram.com) 
->  
-> Infrastructure solivram : PKI interne JenkaCA · HTTPS TOFU nœuds · TLS API interne hot-swap ArcSwap · binaire signé P-256 + ML-DSA-65 · vérifiable via `solivram identity:verify`
+**En production** : [solivram.com](https://solivram.com)
 
 ---
 
