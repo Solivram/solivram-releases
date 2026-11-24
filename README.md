@@ -25,9 +25,6 @@ Package Solivram version Production-Grade disponible en téléchargement exclusi
 
 ---
 
-> **Version GitHub** — solivram v0.2.0 · Phase 271 · 1722 tests — version de base open-source (Ne pas déployer en production la version github)
-**Releases** : [solivram-releases](https://github.com/Solivram/solivram-releases/releases)
-
 ---
 
 Package Solivram version Production-Grade disponible en production réel pour les utilisateurs.
@@ -57,6 +54,9 @@ Package Solivram version Github disponible uniquement pour tester en local.
 - Le Backend de la plateforme Solivram.
 
 ---
+
+> **Version GitHub** — solivram v0.2.0 · Phase 271 · 1722 tests — version de base open-source (Ne pas déployer en production la version github)
+**Releases** : [solivram-releases](https://github.com/Solivram/solivram-releases/releases)
 
 <p align="center">
   <a href="https://github.com/Solivram/solivram-releases/releases/download/v0.2.0/solivram_0.2.0_amd64.deb">
