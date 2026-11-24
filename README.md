@@ -8,15 +8,20 @@
 
 > Infrastructure distribuée haute disponibilité, sécurisée post-quantique, observable et extensible, conçue en Rust pur pour des environnements critiques.
 
-<p align="center">
-  <a href="https://github.com/Solivram/solivram-releases/releases/download/v0.2.0/solivram_0.2.0_amd64.deb">
-    <img src="https://img.shields.io/badge/⬇️%20Télécharger%20solivram%20v0.2.0%20(.deb)-2ea44f?style=for-the-badge" alt="Télécharger"/>
-  </a>
-</p>
+> Solivram est seul dans sa catégorie : Le "Secure Distributed Edge Engine".
+
+> Solivram n'a pas besoin d'installer les dépendances ci-dessous:
+
+❌ nginx
+❌ Docker
+❌ Kubernetes / Istio / Vault
+❌ Redis, Postgres, etc....
 
 ---
 
-Package Solivram version Github disponible uniquement pour tester en local.
+Package Solivram version Production-Grade disponible en téléchargement exclusivement pour les utilisateurs depuis la plateforme.
+> **Version Full; package Solivram - GNU /Linux** — version MIT
+**Open source** : [solivram/full-package/amd64_x86-64_deb/last-stable](https://solivram.com/membre/projets/3e2b0f88-4957-4e86-8a3a-27ba47609712?d=amd64_x86-64_deb/last-stable)
 
 ---
 
@@ -41,6 +46,27 @@ Package Solivram version Production-Grade disponible en production réel pour le
 ---
 
 Package Solivram compatible ARM64 bientôt disponible.
+
+---
+
+---
+
+Package Solivram version Github disponible uniquement pour tester en local.
+- Cette version github Solivram ne contient pas :
+- Le pack de sécurité avancé.
+- Le Backend de la plateforme Solivram.
+
+---
+
+<p align="center">
+  <a href="https://github.com/Solivram/solivram-releases/releases/download/v0.2.0/solivram_0.2.0_amd64.deb">
+    <img src="https://img.shields.io/badge/⬇️%20Télécharger%20solivram%20v0.2.0%20(.deb)-2ea44f?style=for-the-badge" alt="Télécharger"/>
+  </a>
+</p>
+
+---
+
+Package Solivram version Github disponible uniquement pour tester en local.
 
 ---
 
