@@ -48,7 +48,7 @@ Package Solivram compatible ARM64 bientôt disponible.
 
 ---
 
-Package Solivram version Github disponible uniquement pour tester en local.
+Attention: Package Solivram version Github disponible uniquement pour tester en local.
 - Cette version github Solivram ne contient pas :
 - Le pack de sécurité avancé.
 - Le Backend de la plateforme Solivram.
