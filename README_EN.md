@@ -12,16 +12,43 @@
 
 > High-availability distributed infrastructure, post-quantum secured, observable and extensible, built in pure Rust for critical environments.
 
-<p align="center">
-  <a href="https://github.com/Solivram/solivram-releases/releases/download/v0.2.0/solivram_0.2.0_amd64.deb">
-    <img src="https://img.shields.io/badge/⬇️%20Download%20solivram%20v0.2.0%20(.deb)-2ea44f?style=for-the-badge" alt="Download"/>
-  </a>
-</p>
+> No need to install:
+
+❌ nginx
+❌ Docker
+❌ Kubernetes / Istio / Vault
+❌ Redis, Postgres, etc....
+
+---
+
+Full Package:
+The full version Production-Grade is available exclusively on the solivram.com platform.
+
+> **Version Full package Solivram - GNU /Linux** — version MIT
+**Open source** : [solivram/full-package/amd64_x86-64_deb/last-stable](https://solivram.com/membre/projets/3e2b0f88-4957-4e86-8a3a-27ba47609712?d=amd64_x86-64_deb/last-stable)
+
+---
 
 > **GitHub version** — solivram v0.2.0 · Phase 271 · 1722 tests — open-source base version  
 > **Version Production-Grade** — solivram v0.2.0 · Phase 426 · 2458 tests ✅ — disponible sur [solivram.com](https://solivram.com) 
 >  
 > Solivram infrastructure: internal PKI JenkaCA · HTTPS TOFU node verification · internal TLS API hot-swap ArcSwap · P-256 + ML-DSA-65 signed binary · verifiable via `solivram identity:verify`
+
+---
+
+The GitHub lite version of the Solivram package is available for local testing only.
+
+- This GitHub version of Solivram does not include:
+- The advanced security pack.
+- The Solivram platform backend.
+
+---
+
+<p align="center">
+  <a href="https://github.com/Solivram/solivram-releases/releases/download/v0.2.0/solivram_0.2.0_amd64.deb">
+    <img src="https://img.shields.io/badge/⬇️%20Download%20solivram%20v0.2.0%20(.deb)-2ea44f?style=for-the-badge" alt="Download version github lite"/>
+  </a>
+</p>
 
 ---
 
