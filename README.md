@@ -76,7 +76,7 @@ Package Solivram version Github disponible uniquement pour tester en local.
 |------------|-------------------------------------|
 | Auteur     | Jenka Nauta                         |
 | Version    | 0.2.0                               |
-| Date       | 2026-04-06                          |
+| Date       | 2026-07-01                          |
 | Licence    | MIT                                 |
 | Type       | Post-Quantum Infrastructure Engine  |
 | Origine    | France                              |
