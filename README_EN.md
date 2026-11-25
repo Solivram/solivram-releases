@@ -34,6 +34,25 @@ The full version Production-Grade is available exclusively on the solivram.com p
 >  
 > Solivram infrastructure: internal PKI JenkaCA · HTTPS TOFU node verification · internal TLS API hot-swap ArcSwap · P-256 + ML-DSA-65 signed binary · verifiable via `solivram identity:verify`
 
+
+---
+
+NOTICE CONFIGURATION DEFAULT
+
+**CONFIGURATION** : [solivram full_package_amd64_x86-64_deb/last-stable](https://solivram.com/membre/projets/3e2b0f88-4957-4e86-8a3a-27ba47609712/fichiers/4a583fb1-0904-4c9f-81df-89d587524c74/voir)
+
+---
+
+---
+
+FREE ACCOUNT DEMONSTRATION
+
+- LOGIN NAME: demonstration
+- PASSWORD: Demonstration1.2.3
+> **CONNEXION** : [solivram.com/membre/login](https://solivram.com/membre/login)
+
+---
+
 ---
 
 The GitHub lite version of the Solivram package is available for local testing only.
